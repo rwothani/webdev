@@ -22,13 +22,14 @@
         <li><a href="login.php" class="hover:underline">Login</a></li>
         <li><a href="about.php" class="hover:underline">About</a></li>
         <li><a href="contact.php" class="hover:underline">Contact</a></li>
+        <li><a href="admindash.php" class="hover:underline">Admin</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero Image -->
   <div class="w-full">
-    <img src="https://unsplash.com/photos/green-painted-wall-WsL5PhqlGaU" 
+    <img src="children.jpg" 
     alt="Web Design Training Banner" 
     class="w-full h-64 object-cover" />
   </div>
