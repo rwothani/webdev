@@ -1,0 +1,47 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    address VARCHAR(255) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE trainings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100),
+  description TEXT,
+  cost DECIMAL(10, 2)
+);
+
+CREATE TABLE training_requests (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  training_id INT,
+  status VARCHAR(50) DEFAULT 'pending',
+  requested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (training_id) REFERENCES trainings(id)
+);
+
+CREATE TABLE payments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  amount DECIMAL(10,2),
+  method VARCHAR(50),
+  paid_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE books (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100),
+  borrowed_by INT,
+  borrowed_on DATE,
+  returned_on DATE,
+  status VARCHAR(50),
+  FOREIGN KEY (borrowed_by) REFERENCES users(id)
+);
